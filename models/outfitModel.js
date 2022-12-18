@@ -16,9 +16,12 @@ const outfitSchema = new mongoose.Schema({
   colour: {
     type: String,
     required: true
+  },
+  season: {
+    type: String,
+    required: true
   }
 });
-
 
 const outfits = mongoose.model("outfits", outfitSchema);
 
