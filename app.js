@@ -1,5 +1,5 @@
 //! security routes middlewares
-const groceries = require("./models/ordersModel");
+const outfits = require("./models/outfitModel");
 const express = require("express");
 const app = express();
 
@@ -18,21 +18,21 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/groceries", async (req, res) => {
+app.get("/outfits", async (req, res) => {
   try {
-    const allGroceries = await groceries.find();
-    res.status(200).json({ data: allGroceries });
+    const allOutfits = await outfits.find();
+    res.status(200).json({ data: allOutfits });
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
 
-app.post("/createGroceryItem", async (req, res) => {
+app.post("/createOutfit", async (req, res) => {
   try {
-    const newGroceryItem = await groceries.create(req.body);
+    const newOutfit = await outfits.create(req.body);
     res.status(201).json({
       status: "Successfully created item.",
-      data: { newGroceryItem }
+      data: { newOutfit }
     });
   } catch (error) {
     res.status(400).send(error.message);
